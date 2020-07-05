@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/introslider1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilih Tukang Cukur"
+        android:fontFamily="@font/muli_semibold"
+        android:textSize="25dp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Akan Disajikan List Tukang Cukur\nDan Anda Dapat Memilih Tukang Cukur\nYang Anda Inginkan"
+        android:fontFamily="@font/muli"
+        android:textSize="16dp"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
