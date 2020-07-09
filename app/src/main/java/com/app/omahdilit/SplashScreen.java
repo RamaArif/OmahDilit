@@ -5,8 +5,10 @@ import androidx.transition.Fade;
 import androidx.transition.TransitionManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -46,9 +48,49 @@ public class SplashScreen extends AppCompatActivity {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                Intent intent = new Intent(SplashScreen.this, Intro.class);
-                                startActivity(intent);
-                                finish();
+
+                                Thread t = new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        //  Initialize SharedPreferences
+                                        SharedPreferences getPrefs = PreferenceManager
+                                                .getDefaultSharedPreferences(getBaseContext());
+
+                                        //  Create a new boolean and preference and set it to true
+                                        boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
+
+                                        //  If the activity has never started before...
+                                        if (isFirstStart) {
+
+                                            //  Launch app intro
+                                            final Intent intent = new Intent(SplashScreen.this, Intro.class);
+                                            startActivity(intent);
+                                            finish();
+
+                                            runOnUiThread(new Runnable() {
+                                                @Override public void run() {
+                                                    startActivity(intent);
+                                                }
+                                            });
+
+                                            //  Make a new preferences editor
+                                            SharedPreferences.Editor e = getPrefs.edit();
+
+                                            //  Edit preference to make it false because we don't want this to run again
+                                            e.putBoolean("firstStart", false);
+
+                                            //  Apply changes
+                                            e.apply();
+                                        }
+                                        else {
+                                            final Intent intent = new Intent(SplashScreen.this, Login.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                });
+
+                                t.start();
                             }
                         }, 500);
                     }
