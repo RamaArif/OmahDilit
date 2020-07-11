@@ -8,10 +8,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/SplashScreen">
-        <activity android:name=".Intro"></activity>
+        android:theme="@style/noActionBar">
+        <activity android:name=".Register"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_home" />
+        <activity android:name=".Intro" />
         <activity android:name=".Login" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen"
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

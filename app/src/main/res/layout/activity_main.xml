@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/nav_host_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bnve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_cukur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cukur"
+            app:fabCustomSize="70dp"
+            app:backgroundTint="@color/colorPrimary"
+            app:elevation="9dp"
+            app:layout_constraintBottom_toTopOf="@id/bnve"
+            app:layout_constraintLeft_toRightOf="@id/bnve"
+            app:layout_constraintRight_toLeftOf="@id/bnve"
+            app:layout_constraintTop_toBottomOf="@id/bnve"
+            app:layout_constraintTop_toTopOf="@id/bnve"
+            app:layout_insetEdge="bottom"
+            app:maxImageSize="35dp" />
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/putih"
+            android:paddingVertical="5dp"
+            app:itemIconTint="@color/bg_navbar"
+            app:itemTextColor="@color/bg_navbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

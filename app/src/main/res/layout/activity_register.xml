@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
+    tools:context=".Register"
     android:orientation="vertical"
     android:background="@android:color/white">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SELAMAT DATANG"
+        android:text="Lengkapi Datamu"
         android:textColor="@color/colorPrimary"
         android:fontFamily="@font/muli_extrabold"
         android:textSize="30dp"
@@ -22,7 +21,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Masuk untuk mulai cukur rambut \ndan pilih tukang cukur yang anda inginkan"
+        android:text="Isi datamu dengan lengkap \nuntuk menggunakan aplikasi OmahDilit"
         android:lines="2"
         android:textColor="@android:color/black"
         android:fontFamily="@font/muli_semibold"
@@ -30,18 +29,8 @@
         android:layout_marginStart="35dp"
         />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_layout_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        style="@style/textInputLabel"
-        app:hintEnabled="false">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_input_email"
+        <EditText
+            android:id="@+id/register_input_email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/fieldinputemailpass"
@@ -52,12 +41,45 @@
             android:paddingLeft="18dp"
             android:hint="Masukkan Email"
             android:textColorHint="@color/colorAccent"
+            android:layout_marginTop="35dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:enabled="false"
             />
-
-    </com.google.android.material.textfield.TextInputLayout>
+    <EditText
+        android:id="@+id/register_input_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/fieldinputemailpass"
+        android:inputType="textCapWords"
+        android:textColor="@color/textGrey"
+        android:fontFamily="@font/muli_semibold"
+        android:textSize="14dp"
+        android:paddingLeft="18dp"
+        android:hint="Nama Lengkap"
+        android:textColorHint="@color/colorAccent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        />
+    <EditText
+        android:id="@+id/register_input_phone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/fieldinputemailpass"
+        android:inputType="phone"
+        android:textColor="@color/textGrey"
+        android:fontFamily="@font/muli_semibold"
+        android:textSize="14dp"
+        android:paddingLeft="18dp"
+        android:hint="Nomor Telefon"
+        android:textColorHint="@color/colorAccent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_layout_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -65,11 +87,10 @@
         android:layout_marginEnd="35dp"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/textGrey"
-        style="@style/textInputLabel"
         app:hintEnabled="false">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_input_password"
+            android:id="@+id/register_input_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/fieldinputemailpass"
@@ -84,58 +105,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/login_button_email"
+        android:id="@+id/register_button_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btnprimary"
         android:layout_marginTop="20dp"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
-        android:text="Masuk"
+        android:text="Selesai"
         android:fontFamily="@font/muli_semibold"
         android:textSize="15dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="35dp"
-        android:gravity="center"
-        >
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="#DDDDDD"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="atau"
-            android:fontFamily="@font/muli_semibold"
-            android:textSize="15dp"
-            android:textColor="#c4c4c4"
-            android:layout_margin="15dp"
-            />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="#DDDDDD"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <com.shobhitpuri.custombuttons.GoogleSignInButton
-        android:id="@+id/login_button_google"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="35dp"
-        android:text="Masuk dengan Google"
-        android:textSize="18dp"
-        android:fontFamily="@font/muli_semibold"
-        android:background="@drawable/btnlogin"
-        />
 
 </LinearLayout>

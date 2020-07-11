@@ -2,6 +2,7 @@ package com.app.omahdilit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -10,6 +11,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class Login extends AppCompatActivity {
     @BindView(R.id.login_layout_email) TextInputLayout login_layout_email;
@@ -24,5 +26,10 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+    }
+
+    @OnClick (R.id.login_button_email) void login(){
+        Intent intent = new Intent(Login.this, Register.class);
+        startActivity(intent);
     }
 }
