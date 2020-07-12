@@ -1,8 +1,13 @@
 package com.app.omahdilit;
 
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,7 +54,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 .commit();
 
         bnve.setOnNavigationItemSelectedListener(this);
+
     }
+
+    public void UpdateStatusBarColorMerah(int color){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(color);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+    }
+
 
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
@@ -71,9 +87,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         switch (item.getItemId()){
             case R.id.navigation_home:
                 loadFragment(fragment1);
+
                 break;
             case R.id.navigation_profile:
                 loadFragment(fragment3);
+
                 break;
         }
         return loadFragment(fragment);

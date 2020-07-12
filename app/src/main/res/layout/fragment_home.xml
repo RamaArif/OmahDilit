@@ -60,7 +60,7 @@
             app:dotsColor="@color/colorPrimary"
             app:dotsStrokeColor="@color/iconInactive"
             app:dotsStrokeWidth="6dp"
-            app:dotsSize="12dp"
+            app:dotsSize="9dp"
             />
 
         <LinearLayout
