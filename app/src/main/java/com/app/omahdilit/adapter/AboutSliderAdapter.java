@@ -14,7 +14,7 @@ import com.app.omahdilit.R;
 public class AboutSliderAdapter extends RecyclerView.Adapter<AboutSliderAdapter.ViewHolder> {
 
     private Integer [] mResponse = {R.drawable.bg_item_about, R.drawable.bg_item_about,
-            R.drawable.bg_item_about,R.drawable.bg_item_about,R.drawable.bg_item_about,R.drawable.bg_item_about,};
+            R.drawable.bg_item_about,R.drawable.bg_item_about,R.drawable.bg_item_about,R.drawable.bg_item_about};
     private Context context;
 
     public AboutSliderAdapter(Context context) {

@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     @OnClick({R.id.fab_cukur}) void fab(){
-
         loadFragment(fragment2);
     }
 

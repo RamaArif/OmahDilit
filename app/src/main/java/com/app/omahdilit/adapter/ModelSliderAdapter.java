@@ -5,27 +5,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.app.omahdilit.R;
 import com.squareup.picasso.Picasso;
 
-import jp.wasabeef.picasso.transformations.CropSquareTransformation;
-import jp.wasabeef.picasso.transformations.CropTransformation;
+import java.util.ArrayList;
 
-public class PromoSliderAdapter extends PagerAdapter {
-//    private ArrayList<PromoResponse> mResponse;
-        private Integer [] mResponse = {R.drawable.bg_item_promo, R.drawable.bg_item_promo,
-        R.drawable.bg_item_promo,  R.drawable.bg_item_promo, R.drawable.bg_item_promo,};
+public class ModelSliderAdapter extends PagerAdapter {
+
+    private Integer [] imgList  =  {R.drawable.img_slider_model, R.drawable.img_slider_model, R.drawable.img_slider_model,
+            R.drawable.img_slider_model, R.drawable.img_slider_model, };
+    private String [] nameList =  {"Pompador","Pompador","Pompador","Pompador","Pompador"};
     private Context context;
     private LayoutInflater layoutInflater;
 
-    public PromoSliderAdapter(Context context) {
+    public ModelSliderAdapter(Context context) {
         this.context = context;
     }
 
@@ -35,11 +35,13 @@ public class PromoSliderAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, final int position) {
+    public Object instantiateItem(ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.item_home_promo, null);
-        ImageView item_promo_image = view.findViewById(R.id.item_promo_image);
-        Picasso.get().load(mResponse[position]).resize(item_promo_image.getMeasuredWidth(), 350).centerCrop().into(item_promo_image);
+        View view = layoutInflater.inflate(R.layout.item_model_slidermodel, null);
+        ImageView item_model_headline = view.findViewById(R.id.item_model_headline);
+        TextView item_model_headlinetext = view.findViewById(R.id.text_model_namaslider);
+        Picasso.get().load(imgList[position]).resize(item_model_headline.getMeasuredWidth(), 500).centerCrop().into(item_model_headline);
+        item_model_headlinetext.setText(nameList[position]);
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);
@@ -48,7 +50,7 @@ public class PromoSliderAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mResponse.length;
+        return imgList.length;
     }
 
     @Override

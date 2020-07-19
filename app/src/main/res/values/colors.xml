@@ -5,6 +5,7 @@
     <color name="colorAccent">#9c9a9a</color>
     <color name="putih">#FFFFFF</color>
     <color name="textGrey">#555555</color>
+    <color name="textdarkGrey">#3a3a3a</color>
     <color name="iconActive">#ea0d34</color>
     <color name="iconInactive">#c0c0c0</color>
     <color name="pageBackground">#f8f8f8</color>

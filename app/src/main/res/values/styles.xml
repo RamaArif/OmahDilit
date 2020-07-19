@@ -33,5 +33,30 @@
         <item name="android:textSize">16dp</item>
     </style>
 
+    <style name="AppBarWhite" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/putih</item>
+        <item name="android:statusBarColor">@color/putih</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 
+    <style name="TitleBarTextAppearanceAppBar" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/muli_bold</item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="baseText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/muli</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="baseTextSemiBold" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/muli_semibold</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="baseTextBold" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/muli_bold</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
 </resources>

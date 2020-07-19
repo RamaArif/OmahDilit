@@ -9,14 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/noActionBarWhite">
-        <activity android:name=".Register"></activity>
+        <activity android:name=".EditProfil"
+            android:label="Edit Profil"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Riwayat"
+            android:label="Riwayat Pesananmu"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".PilihTukangCukur"
+            android:label="Pilih Tukang Cukur"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".DetailModel"
+            android:label="Detail Model Rambut"
+            android:parentActivityName=".ModelRambut" />
+        <activity
+            android:name=".ModelRambut"
+            android:label="Model Rambut"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".Register" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/noActionBar"/>
+            android:theme="@style/noActionBar" />
         <activity android:name=".Intro" />
         <activity android:name=".Login" />
-        <activity android:name=".SplashScreen"
+        <activity
+            android:name=".SplashScreen"
             android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
