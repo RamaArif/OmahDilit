@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailModel"
+    tools:context=".DetailPilihModel"
     android:orientation="vertical"
     android:background="@color/putih">
 
@@ -24,27 +24,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/ic_back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="Detail Model Rambut"
-                android:textAppearance="@style/baseTextBold"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Detail Model Rambut"
+                    android:textAppearance="@style/baseTextBold"
+                    android:textSize="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
@@ -55,7 +55,7 @@
         android:layout_height="match_parent">
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/card_detailmodel_slider"
+            android:id="@+id/detailpilihmodel_container_slider"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="30dp"
@@ -66,7 +66,7 @@
             />
 
         <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
-            android:id="@+id/indicator_detailmodel_slider"
+            android:id="@+id/detailpilihmodel_indicator_slider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -76,7 +76,7 @@
             app:dotsStrokeWidth="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_detailmodel_slider" />
+            app:layout_constraintTop_toBottomOf="@+id/detailpilihmodel_container_slider" />
 
         <TextView
             android:id="@+id/textView7"
@@ -88,7 +88,7 @@
             android:textAppearance="@style/baseTextSemiBold"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/indicator_detailmodel_slider" />
+            app:layout_constraintTop_toBottomOf="@id/detailpilihmodel_indicator_slider" />
 
         <TextView
             android:id="@+id/textView5"
@@ -127,7 +127,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <TextView
-            android:id="@+id/item_detailmodel_namamodel"
+            android:id="@+id/detailpilihmodel_text_namamodel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -139,18 +139,18 @@
             app:layout_constraintTop_toTopOf="@+id/textView5" />
 
         <TextView
-            android:id="@+id/item_detailmodel_gaya"
+            android:id="@+id/detailpilihmodel_text_gayarambut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nama"
             android:textAppearance="@style/baseText"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView8"
-            app:layout_constraintStart_toStartOf="@+id/item_detailmodel_namamodel"
+            app:layout_constraintStart_toStartOf="@+id/detailpilihmodel_text_namamodel"
             app:layout_constraintTop_toTopOf="@+id/textView8" />
 
         <TextView
-            android:id="@+id/item_detailmodel_detail"
+            android:id="@+id/detailpilihmodel_text_detailmodel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -158,31 +158,22 @@
             android:textAppearance="@style/baseText"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/item_detailmodel_gaya"
+            app:layout_constraintStart_toStartOf="@+id/detailpilihmodel_text_gayarambut"
             app:layout_constraintTop_toTopOf="@+id/textView9" />
 
         <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Model Lainnya"
-            android:textAppearance="@style/baseTextSemiBold"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/card_detailmodel_rv"
+            android:id="@+id/detailpilihmodel_button_pilihmodel"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="14dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10"
-            tools:listitem="@layout/item_detailmodel_rv" />
+            app:layout_constraintHeight_percent="0.06"
+            android:gravity="center"
+            android:background="#0063AD"
+            android:text="Pilih Model"
+            android:textSize="16dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/baseTextBold"
+            android:textColor="@color/putih"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

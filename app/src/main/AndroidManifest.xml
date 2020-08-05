@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.omahdilit">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,23 +11,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/noActionBarWhite">
-        <activity android:name=".EditProfil"
-            android:label="Edit Profil"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Riwayat"
-            android:label="Riwayat Pesananmu"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Promo"></activity>
+        <activity
+            android:name=".DetailPromo"
+            android:theme="@style/TransparentStatusbar" />
+        <activity android:name=".DetailPilihModel" />
+        <activity android:name=".PilihModelRambut" />
+        <activity android:name=".DetailPesanan" />
+        <activity
+            android:name=".EditProfil"
+            android:label=""
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Riwayat"
+            android:label=""
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".PilihTukangCukur"
-            android:label="Pilih Tukang Cukur"
+            android:label=""
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DetailModel"
-            android:label="Detail Model Rambut"
+            android:label=""
             android:parentActivityName=".ModelRambut" />
         <activity
             android:name=".ModelRambut"
-            android:label="Model Rambut"
+            android:label=""
             android:parentActivityName=".MainActivity" />
         <activity android:name=".Register" />
         <activity
@@ -36,6 +47,7 @@
         <activity android:name=".Login" />
         <activity
             android:name=".SplashScreen"
+            android:hardwareAccelerated="false"
             android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

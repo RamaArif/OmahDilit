@@ -21,6 +21,7 @@
         <item name="windowActionBar">false</item>
         <item name="android:statusBarColor">@android:color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="textInputLabel" parent="Widget.Design.TextInputLayout">
@@ -37,6 +38,15 @@
         <item name="colorPrimary">@color/putih</item>
         <item name="android:statusBarColor">@color/putih</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="TransparentStatusbar" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="TitleBarTextAppearanceAppBar" parent="android:TextAppearance">

@@ -13,20 +13,21 @@
         android:layout_height="150dp"
         android:background="@color/colorPrimary"
         android:paddingBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/text_profile_phone"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:id="@+id/layout_profile_imageuser"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
         android:background="@drawable/bg_image_user"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/iv_profile_imageuser"
@@ -92,7 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        android:id="@+id/profil_layout_editprofil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -122,9 +123,10 @@
             android:textAppearance="@style/textContent" />
 
         <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="8dp"
+            android:layout_height="6dp"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
             android:src="@drawable/ic_next"
             android:tint="#232323" />
     </RelativeLayout>
@@ -140,7 +142,7 @@
         android:background="#DDDDDD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/profil_layout_editprofil" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout_policy"

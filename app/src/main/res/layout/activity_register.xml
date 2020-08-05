@@ -1,120 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register"
-    android:orientation="vertical"
     android:background="@android:color/white">
 
     <TextView
+        android:id="@+id/textView14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/muli_extrabold"
         android:text="Lengkapi Datamu"
         android:textColor="@color/colorPrimary"
-        android:fontFamily="@font/muli_extrabold"
         android:textSize="30dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="60dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Isi datamu dengan lengkap \nuntuk menggunakan aplikasi OmahDilit"
-        android:lines="2"
-        android:textColor="@android:color/black"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/muli_semibold"
+        android:lines="2"
+        android:text="Isi datamu dengan lengkap \nuntuk menggunakan aplikasi OmahDilit"
+        android:textColor="@android:color/black"
         android:textSize="15dp"
-        android:layout_marginStart="35dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
-        <EditText
-            android:id="@+id/register_input_email"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/fieldinputemailpass"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/textGrey"
-            android:fontFamily="@font/muli_semibold"
-            android:textSize="14dp"
-            android:paddingLeft="18dp"
-            android:hint="Masukkan Email"
-            android:textColorHint="@color/colorAccent"
-            android:layout_marginTop="35dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"
-            android:enabled="false"
-            />
+    <EditText
+        android:id="@+id/register_input_email"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/fieldinputemailpass"
+        android:enabled="false"
+        android:fontFamily="@font/muli_semibold"
+        android:hint="Masukkan Email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="18dp"
+        android:textColor="@color/textdarkGrey"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
     <EditText
         android:id="@+id/register_input_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/fieldinputemailpass"
-        android:inputType="textCapWords"
-        android:textColor="@color/textGrey"
         android:fontFamily="@font/muli_semibold"
-        android:textSize="14dp"
-        android:paddingLeft="18dp"
         android:hint="Nama Lengkap"
+        android:inputType="textCapWords"
+        android:paddingLeft="18dp"
+        android:textColor="@color/textdarkGrey"
         android:textColorHint="@color/colorAccent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        />
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_input_email" />
+
+    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+        android:id="@+id/register_input_ccp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center"
+        android:paddingStart="10dp"
+        android:paddingEnd="5dp"
+        android:background="@drawable/fieldinputemailpass"
+        app:ccp_defaultCode="62"
+        app:ccp_hideNameCode="true"
+        app:ccp_textColor="@color/textdarkGrey"
+        app:ccp_textFont="muli_SemiBold.ttf"
+        app:ccp_textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/register_input_phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/register_input_phone"
+        app:layout_constraintVertical_bias="0.0"
+        app:ccp_clickable="false"/>
+
     <EditText
         android:id="@+id/register_input_phone"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/fieldinputemailpass"
-        android:inputType="phone"
-        android:textColor="@color/textGrey"
         android:fontFamily="@font/muli_semibold"
-        android:textSize="14dp"
-        android:paddingLeft="18dp"
         android:hint="Nomor Telefon"
+        android:inputType="phone"
+        android:maxLength="13"
+        android:paddingLeft="18dp"
+        android:textColor="@color/textdarkGrey"
         android:textColorHint="@color/colorAccent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        />
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/register_input_ccp"
+        app:layout_constraintTop_toBottomOf="@+id/register_input_name" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_input_phone"
         app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/textGrey"
-        app:hintEnabled="false">
+        app:passwordToggleTint="@color/textdarkGrey">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_input_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/fieldinputemailpass"
-            android:textColor="@color/textGrey"
-            android:inputType="textPassword"
             android:fontFamily="@font/muli_semibold"
-            android:textSize="14dp"
-            android:paddingLeft="18dp"
             android:hint="Masukkan Password"
+            android:inputType="textPassword"
+            android:paddingLeft="18dp"
+            android:textColor="@color/textdarkGrey"
             android:textColorHint="@color/colorAccent"
-            />
+            android:textSize="14dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/register_button_register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/btnprimary"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:text="Selesai"
         android:fontFamily="@font/muli_semibold"
-        android:textSize="15dp"/>
+        android:text="Selesai"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

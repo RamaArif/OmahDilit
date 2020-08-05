@@ -1,5 +1,6 @@
 package com.app.omahdilit;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -13,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.app.omahdilit.ui.cukur.CukurFragment;
 import com.app.omahdilit.ui.home.HomeFragment;
 import com.app.omahdilit.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
-        HomeFragment.OnFragmentInteractionListener, CukurFragment.OnFragmentInteractionListener,
+        HomeFragment.OnFragmentInteractionListener,
         ProfileFragment.OnFragmentInteractionListener{
 
     @BindView(R.id.bnve)
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     FloatingActionButton fabParking;
 
     Fragment fragment1  = new HomeFragment();
-    Fragment fragment2  = new CukurFragment();
     Fragment fragment3  = new ProfileFragment();
     Fragment active     = fragment1;
 
@@ -41,31 +40,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
+
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.nav_host_fragment, fragment1)
-                .commit();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.nav_host_fragment, fragment2).hide(fragment2)
                 .commit();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.nav_host_fragment, fragment3).hide(fragment3)
                 .commit();
 
         bnve.setOnNavigationItemSelectedListener(this);
-
     }
-
-    public void UpdateStatusBarColorMerah(int color){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(color);
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }
-    }
-
 
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
@@ -77,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     @OnClick({R.id.fab_cukur}) void fab(){
-        loadFragment(fragment2);
+        Intent intent = new Intent(MainActivity.this, PilihTukangCukur.class);
+        startActivity(intent);
     }
 
     @Override

@@ -13,16 +13,40 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/AppBarWhite">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarEditProfil"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/putih"
-            app:titleTextAppearance="@style/TitleBarTextAppearanceAppBar"
-            app:navigationIcon="@drawable/ic_back"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:layout_height="?attr/actionBarSize">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/editprofil_ic_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Edit Profil"
+                    android:textAppearance="@style/baseTextBold"
+                    android:textSize="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +54,134 @@
         android:layout_height="match_parent"
         android:background="@color/putih">
 
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="Nama"
+            android:textAppearance="@style/baseText"
+            android:textColor="@color/textGrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <EditText
+            android:id="@+id/editprofil_input_nama"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.0725"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/fieldinputemailpass"
+            android:hint="Masukkan Nama"
+            android:inputType="textCapWords"
+            android:paddingLeft="12dp"
+            android:textSize="16dp"
+            android:text="Hernawan Septiansyah"
+            android:textAppearance="@style/baseTextSemiBold"
+            android:textColor="@color/textdarkGrey"
+            android:textColorHint="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:text="Nomor Telefon"
+            android:textAppearance="@style/baseText"
+            android:textColor="@color/textGrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editprofil_input_nama" />
+
+        <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+            android:id="@+id/register_input_ccp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.22"
+            app:layout_constraintHeight_percent="0.0725"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/fieldinputemailpass"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            app:ccp_clickable="false"
+            app:ccp_defaultCode="62"
+            app:ccp_hideNameCode="true"
+            app:ccp_textColor="@color/textdarkGrey"
+            app:ccp_textFont="muli_SemiBold.ttf"
+            app:ccp_textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editprofil_input_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editprofil_input_phone"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/editprofil_input_phone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.0725"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/fieldinputemailpass"
+            android:hint="Masukkan Nomor Telefon"
+            android:inputType="phone"
+            android:maxLength="12"
+            android:paddingLeft="12dp"
+            android:text="85155439113"
+            android:textSize="16dp"
+            android:textAppearance="@style/baseTextSemiBold"
+            android:textColor="@color/textdarkGrey"
+            android:textColorHint="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/register_input_ccp"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:text="Nomor Telefon"
+            android:textAppearance="@style/baseText"
+            android:textColor="@color/textGrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editprofil_input_phone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.0725"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/textdarkGrey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editprofil_input_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Masukkan Password"
+                android:inputType="textPassword"
+                android:paddingLeft="12dp"
+                android:textColor="@color/textdarkGrey"
+                android:background="@drawable/fieldinputemailpass"
+                android:textAppearance="@style/baseTextSemiBold"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

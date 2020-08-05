@@ -77,8 +77,8 @@
                 android:padding="15dp">
 
                 <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:src="@drawable/bg_menu_cukur"/>
                 <TextView
                     android:layout_width="wrap_content"

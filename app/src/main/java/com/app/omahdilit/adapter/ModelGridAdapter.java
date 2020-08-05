@@ -38,8 +38,15 @@ public class ModelGridAdapter extends RecyclerView.Adapter<ModelGridAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ModelGridAdapter.ViewHolder holder, int position) {
-        Picasso.get().load(imgModel[position]).resize(300, holder.card_model_grid.getMeasuredHeight()).centerCrop().into(holder.card_model_grid);
+        Picasso.get().load(imgModel[position]).resize(300, holder.card_model_image.getMeasuredHeight()).centerCrop().into(holder.card_model_image);
         holder.text_model_namegrid.setText(nameModel[position]);
+
+        holder.card_model_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
@@ -48,13 +55,15 @@ public class ModelGridAdapter extends RecyclerView.Adapter<ModelGridAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView card_model_grid;
+        public ImageView card_model_image;
         public TextView text_model_namegrid;
+        public CardView card_model_layout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            card_model_grid = itemView.findViewById(R.id.item_model_gridimage);
+            card_model_image = itemView.findViewById(R.id.item_model_gridimage);
             text_model_namegrid = itemView.findViewById(R.id.text_model_gridname);
+            card_model_layout = itemView.findViewById(R.id.item_model_gridLayout);
         }
     }
 }
