@@ -22,15 +22,8 @@ public class LoadingDialog {
         dialog.setContentView(R.layout.custom_loading);
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.loading_bg);
         dialog.setCancelable(false);
-
-        ImageView imageView = dialog.findViewById(R.id.loading_gif);
-
-        Glide.with(activity)
-                .load(R.drawable.ic_loading)
-                .placeholder(R.drawable.ic_loading)
-                .centerCrop()
-                .into(new DrawableImageViewTarget(imageView));
         dialog.show();
+
     }
 
     void dismissLoading(){

@@ -2,6 +2,7 @@ package com.app.omahdilit;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,6 +36,7 @@ public class ModelRambut extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     ModelRambutAdapter modelRambutAdapter;
     List<ModelItem> modelItems;
+    LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,8 @@ public class ModelRambut extends AppCompatActivity {
                 finish();
             }
         });
+
+        loadingDialog = new LoadingDialog(ModelRambut.this);
 
         modelItems = new ArrayList<>();
         modelRambutAdapter = new ModelRambutAdapter(ModelRambut.this, modelItems);
@@ -69,7 +74,7 @@ public class ModelRambut extends AppCompatActivity {
     }
 
     public void getData(){
-
+        loadingDialog.startLoading();
         ModelApi modelApi = RetrofitApi.getApiModel();
         Call<ModelResponse> call = modelApi.getModel();
         call.enqueue(new Callback<ModelResponse>() {
@@ -84,6 +89,7 @@ public class ModelRambut extends AppCompatActivity {
                 } else {
                     Toast.makeText(ModelRambut.this, "error", Toast.LENGTH_SHORT).show();
                 }
+                loadingDialog.dismissLoading();
             }
 
             @Override
@@ -91,6 +97,16 @@ public class ModelRambut extends AppCompatActivity {
                 Toast.makeText(ModelRambut.this, "error : "+ t, Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    @OnClick(R.id.model_button_all) void onClickAll(){
+        modelRambutAdapter.filterData("all");
+    }
+
+    @OnClick(R.id.model_button_laki) void onClickLaki(){
+        modelRambutAdapter.filterData("laki");
+    }
+    @OnClick(R.id.model_button_perempuan) void onClickPerempuan(){
+        modelRambutAdapter.filterData("perempuan");
     }
 }

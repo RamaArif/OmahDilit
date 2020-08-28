@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,10 +24,12 @@ import java.util.List;
 public class ModelRambutAdapter extends RecyclerView.Adapter<ModelRambutAdapter.ViewHolder> {
 
     private List<ModelItem> modelItems;
+    private List<ModelItem> filteredItems;
     private Context context;
 
     public ModelRambutAdapter( Context context, List<ModelItem> modelItems) {
         this.modelItems = modelItems;
+        this.filteredItems = modelItems;
         this.context = context;
     }
 
@@ -43,6 +46,7 @@ public class ModelRambutAdapter extends RecyclerView.Adapter<ModelRambutAdapter.
         String urlImg = "http://omahdilit.my.id/public/images/" + modelItem.getPhoto1();
         Picasso.get().load(urlImg).fit().centerCrop().into(holder.card_model_image);
         holder.text_model_namegrid.setText(modelItem.getNamaModel());
+        holder.model_text_kategori.setText(modelItem.getKategori());
         holder.card_model_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,13 +67,33 @@ public class ModelRambutAdapter extends RecyclerView.Adapter<ModelRambutAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView card_model_image;
         public TextView text_model_namegrid;
+        public TextView model_text_kategori;
         public CardView card_model_layout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            model_text_kategori = itemView.findViewById(R.id.model_item_kategori);
             card_model_image = itemView.findViewById(R.id.item_model_gridimage);
-            text_model_namegrid = itemView.findViewById(R.id.text_model_gridname);
+            text_model_namegrid = itemView.findViewById(R.id.model_item_name);
             card_model_layout = itemView.findViewById(R.id.item_model_gridLayout);
+        }
+    }
+
+    public void filterData(String category){
+        filteredItems.clear();
+        if (category == "all"){
+            filteredItems.addAll(modelItems);
+        } else if (category == "laki"){
+            for (ModelItem modelItem : modelItems){
+                if (modelItem.getKategori().contains("Laki - laki")){
+                    filteredItems.add(modelItem);
+                }
+            }
+        } else if (category == "perempuan"){
+            for (ModelItem modelItem : modelItems){
+                if (modelItem.getKategori().contains("Perempuan")){
+                    filteredItems.add(modelItem);
+                }
+            }
         }
     }
 }

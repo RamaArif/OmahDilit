@@ -7,4 +7,10 @@
     <string name="alert_pesan_modelrambut">Mohon Maaf\nPilih Model Rambut\nDulu Ya ...</string>
     <string name="alert_pilihtukang_unable">Mohon Maaf\nTukang Cukur Ini\nTidak Tersedia ...</string>
     <string name="alert_pesan_COD">Mohon Maaf\nSaat Ini Hanya Ada\nPembayaran Tunai ...</string>
+    <string-array name="loadingAnimation">
+        <item>M24.3,30C11.4,30 5,43.3 5,50s6.4,20 19.3,20c19.3,0 32.1,-40 51.4,-40C88.6,30 95,43.3 95,50s-6.4,20 -19.3,20C56.4,70 43.6,30 24.3,30z</item>
+    </string-array>
+    <integer-array name="loadingcolor">
+        <item>@color/colorPrimary</item>
+    </integer-array>
 </resources>

@@ -33,6 +33,7 @@ public class Promo extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     PromoAdapter promoAdapter;
     List<PromoItem> promoItems;
+    LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,8 @@ public class Promo extends AppCompatActivity {
                 finish();
             }
         });
+
+        loadingDialog = new LoadingDialog(Promo.this);
 
         promoItems = new ArrayList<>();
         promoAdapter = new PromoAdapter(Promo.this, promoItems);
@@ -69,6 +72,7 @@ public class Promo extends AppCompatActivity {
     }
 
     void getData(){
+        loadingDialog.startLoading();
         PromoApi api = RetrofitApi.getApiPromo();
         Call<PromoResponse>call=api.getPromo();
         call.enqueue(new Callback<PromoResponse>() {
@@ -84,6 +88,7 @@ public class Promo extends AppCompatActivity {
                 } else {
                     Toast.makeText(Promo.this, "error", Toast.LENGTH_SHORT).show();
                 }
+                loadingDialog.dismissLoading();
             }
 
             @Override

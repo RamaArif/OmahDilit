@@ -77,7 +77,6 @@ public class ProfileFragment extends Fragment {
                     requireActivity().finish();
                 }
             });
-
     }
 
     @OnClick(R.id.profil_layout_editprofil) void onClickEditProfil(){

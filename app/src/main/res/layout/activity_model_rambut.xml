@@ -63,12 +63,56 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/model_button_perempuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_kategori_unselected"
+                android:paddingVertical="3dp"
+                android:paddingHorizontal="10dp"
+                android:text="Perempuan"
+                android:textColor="@color/colorAccent"
+                android:textAppearance="@style/baseTextSemiBold"
+                app:layout_constraintEnd_toEndOf="@+id/textView25"
+                app:layout_constraintTop_toBottomOf="@id/textView25" />
+
+            <TextView
+                android:id="@+id/model_button_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_kategori_selected"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:text="Semua"
+                android:textAppearance="@style/baseTextSemiBold"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toStartOf="@+id/model_button_laki"
+                app:layout_constraintTop_toTopOf="@id/model_button_perempuan" />
+
+            <TextView
+                android:id="@+id/model_button_laki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_kategori_unselected"
+                android:paddingVertical="3dp"
+                android:paddingHorizontal="10dp"
+                android:text="Laki - Laki"
+                android:textColor="@color/colorAccent"
+                android:textAppearance="@style/baseTextSemiBold"
+                app:layout_constraintEnd_toStartOf="@+id/model_button_perempuan"
+                app:layout_constraintTop_toTopOf="@id/model_button_perempuan" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_model_gridmodel"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="8dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintTop_toBottomOf="@+id/textView25"
+                app:layout_constraintTop_toBottomOf="@+id/model_button_perempuan"
                 app:spanCount="2"
                 tools:listitem="@layout/item_model_grid" />
         </androidx.constraintlayout.widget.ConstraintLayout>
