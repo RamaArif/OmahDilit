@@ -134,7 +134,7 @@
         android:layout_marginHorizontal="35dp"
         android:text="Masuk dengan Google"
         android:textSize="18dp"
-        android:fontFamily="@font/muli_semibold"
+        android:fontFamily="@font/muli_bold"
         android:background="@drawable/btnlogin"
         />
 

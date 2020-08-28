@@ -33,7 +33,7 @@
             android:textSize="24dp" />
 
         <TextView
-            android:id="@+id/text_home_nama"
+            android:id="@+id/home_text_nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -77,8 +77,8 @@
                 android:padding="15dp">
 
                 <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
                     android:src="@drawable/bg_menu_cukur"/>
                 <TextView
                     android:layout_width="wrap_content"

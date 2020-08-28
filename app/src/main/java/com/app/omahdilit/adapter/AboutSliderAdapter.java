@@ -31,7 +31,6 @@ public class AboutSliderAdapter extends RecyclerView.Adapter<AboutSliderAdapter.
     @Override
     public void onBindViewHolder(@NonNull AboutSliderAdapter.ViewHolder holder, int position) {
         holder.item_home_about.setBackgroundResource(mResponse[position]);
-
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.app.omahdilit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.transition.Fade;
 import androidx.transition.TransitionManager;
@@ -13,6 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -21,6 +25,20 @@ public class SplashScreen extends AppCompatActivity {
     @BindView(R.id.txt_splash1) TextView txtSplash1;
     @BindView(R.id.txt_splash2) TextView txtSplash2;
     @BindView(R.id.txt_splash3) TextView txtSplash3;
+
+//    private FirebaseAuth mAuth;
+//    FirebaseAuth.AuthStateListener mAuthListner;
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser user = mAuth.getCurrentUser();
+//        updateUI(user);
+//    }
+//
+//    private void updateUI(FirebaseUser user) {
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +101,25 @@ public class SplashScreen extends AppCompatActivity {
                                             e.apply();
                                         }
                                         else {
-                                            final Intent intent = new Intent(SplashScreen.this, Login.class);
-                                            startActivity(intent);
-                                            finish();
+//                                            mAuth = FirebaseAuth.getInstance();
+//                                            if (mAuth.getCurrentUser() == null) {
+//                                                unloggedin();
+//                                            }
+//                                            else {
+//                                                loggedin();
+//                                            }
+//
+//                                            mAuthListner = new FirebaseAuth.AuthStateListener() {
+//                                            @Override
+//                                            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                                                if (firebaseAuth.getCurrentUser() != null) {
+//                                                   loggedin();
+//                                                } else if (firebaseAuth.getCurrentUser() == null){
+                                                    unloggedin();
+//                                                }
+//                                            }
+//                                        };
+
                                         }
                                     }
                                 });
@@ -97,5 +131,17 @@ public class SplashScreen extends AppCompatActivity {
                 }, 3000);
             }
         }, 1000);
+    }
+
+    private void unloggedin() {
+        final Intent intent = new Intent(SplashScreen.this, Login.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void loggedin() {
+        final Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -10,8 +10,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/noActionBarWhite">
-        <activity android:name=".Promo"></activity>
+        <activity android:name=".Promo"/>
         <activity
             android:name=".DetailPromo"
             android:theme="@style/TransparentStatusbar" />

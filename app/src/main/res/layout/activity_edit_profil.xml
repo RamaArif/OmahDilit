@@ -24,20 +24,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/editprofil_ic_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/ic_back"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="72dp"
                     android:text="Edit Profil"
                     android:textAppearance="@style/baseTextBold"
                     android:textSize="16dp"
@@ -149,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
-            android:text="Nomor Telefon"
+            android:text="Password"
             android:textAppearance="@style/baseText"
             android:textColor="@color/textGrey"
             app:layout_constraintStart_toStartOf="parent"
