@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
-//            getSupportFragmentManager().beginTransaction().hide(active).show(fragment).commit();
-            getSupportFragmentManager().beginTransaction().detach(active).attach(fragment).commit();
+            getSupportFragmentManager().beginTransaction().hide(active).show(fragment).commit();
+//            getSupportFragmentManager().beginTransaction().detach(active).attach(fragment).commit();
             active = fragment;
             return true;
         }
