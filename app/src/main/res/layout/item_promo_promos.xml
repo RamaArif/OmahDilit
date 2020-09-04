@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-    android:id="@+id/promo_layout_item"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -9,9 +8,11 @@
     android:layout_marginHorizontal="16dp"
     app:cardCornerRadius="15dp"
     android:elevation="20dp"
-    android:layout_marginTop="15dp">
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/promo_layout_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/putih">

@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.app.omahdilit.api.LoginApi;
+import com.app.omahdilit.api.RetrofitApi;
+import com.app.omahdilit.response.LoginResponse;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -21,6 +23,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -33,8 +36,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
-    @BindView(R.id.login_layout_email) TextInputLayout login_layout_email;
-    @BindView(R.id.login_layout_password) TextInputLayout login_layout_password;
     @BindView(R.id.login_input_email) TextInputEditText login_input_email;
     @BindView(R.id.login_input_password) TextInputEditText login_input_password;
     @BindView(R.id.login_button_email) Button login_button_email;
@@ -69,14 +70,16 @@ public class Login extends AppCompatActivity {
 
         }
         else {
-            loggedin();
+            FirebaseUser user = mAuth.getCurrentUser();
+            checkLogin(user.getEmail());
         }
 
         mAuthListner = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
-                    loggedin();
+                    FirebaseUser user = mAuth.getCurrentUser();
+                   checkLogin(user.getEmail());
                 }
             }
         };
@@ -120,8 +123,8 @@ public class Login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            loggedin();
-                            finish();
+                            Toast.makeText(Login.this, "Login sukses", Toast.LENGTH_SHORT).show();
+                            checkLogin(user.getEmail());
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(Login.this, "Login Gagal", Toast.LENGTH_SHORT).show();
@@ -132,17 +135,58 @@ public class Login extends AppCompatActivity {
                 });
     }
 
-    private void loggedin() {
-        FirebaseUser user = mAuth.getCurrentUser();
-        String id = user.getUid();
-
+    private void registered() {
         Intent intent = new Intent(Login.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
-    @OnClick (R.id.login_button_email) void login(){
+    private void unregistered(){
         Intent intent = new Intent(Login.this, Register.class);
         startActivity(intent);
+        finish();
+    }
+
+    private void checkLogin(String email){
+        Toast.makeText(Login.this, email, Toast.LENGTH_SHORT).show();
+
+        LoginApi api = RetrofitApi.getLogin();
+        Call<LoginResponse> call = api.getLogin(email);
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                if (response.body() != null){
+                    Toast.makeText(Login.this, "api dipanggil",Toast.LENGTH_SHORT).show();
+                    Boolean unRegistered = response.body().getError();
+                    if (unRegistered){
+                        unregistered();
+                    }
+                    else {
+                        registered();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Toast.makeText(Login.this, "error : "+t,Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    @OnClick (R.id.login_button_email) void login(){
+        String email, password;
+        email = String.valueOf(login_input_email.getText());
+        password = String.valueOf(login_input_password.getText());
+        AuthCredential authCredential = EmailAuthProvider.getCredential(email,password);
+        mAuth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    updateUI(user);
+                    checkLogin(user.getEmail());
+                }
+            }
+        });
     }
 }

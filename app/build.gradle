@@ -82,7 +82,9 @@ dependencies {
     //shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
-    //loading
+    //animation
     implementation "com.airbnb.android:lottie:3.4.1"
 
+    //translucentstaturbar
+    implementation "com.jaeger.statusbarutil:library:1.5.1"
 }

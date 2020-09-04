@@ -25,7 +25,7 @@
     </style>
 
     <style name="textInputLabel" parent="Widget.Design.TextInputLayout">
-            <item name="android:textColorHint">@color/colorAccent</item>
+        <item name="android:textColorHint">@color/colorAccent</item>
     </style>
 
     <style name="textContent" parent="TextAppearance.AppCompat">
@@ -41,12 +41,10 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="TransparentStatusbar" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/transparent</item>
+    <style name="TransparentStatusbar" parent="Theme.AppCompat.NoActionBar">
+        <!--        <item name="android:statusBarColor">@color/transparent</item>-->
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:fitsSystemWindows">true</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="TitleBarTextAppearanceAppBar" parent="android:TextAppearance">
@@ -69,4 +67,18 @@
         <item name="fontFamily">@font/muli_bold</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
+
+    <style name="AppbarBold" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/muli_bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="noActionBarWhite.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="noActionBarWhite.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="noActionBarWhite.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

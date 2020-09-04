@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.omahdilit.DetailPromo;
@@ -50,12 +51,11 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.ViewHolder>{
         final PromoItem item = mResponse.get(position);
 
         String urlImg = "http://omahdilit.my.id/public/images/" + item.getUrlPromo();
-//        Toast.makeText(context, urlImg, Toast.LENGTH_SHORT).show();
         Picasso.get().load(urlImg).fit().centerCrop().into(holder.imgPromo);
         holder.namaPromo.setText(String.valueOf(item.getNamaPromo()));
         String inputDate = item.getTglAkhirPromo();
         Locale localeID = new Locale("id","ID");
-        SimpleDateFormat inputFormat = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Date date = null;
         try {
             date = inputFormat.parse(inputDate);
@@ -64,13 +64,16 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.ViewHolder>{
         }
         DateFormat dateFormat = SimpleDateFormat.getDateInstance(DateFormat.LONG, localeID);
         holder.tanggalPromo.setText(dateFormat.format(date));
+        String idPromo = item.getIdPromo();
 
         holder.layoutPromo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailPromo.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("id", item.getIdPromo());
+                bundle.putString("id", idPromo);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
     }
@@ -85,7 +88,7 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.ViewHolder>{
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public CardView layoutPromo;
+        public ConstraintLayout layoutPromo;
         public ImageView imgPromo;
         public TextView namaPromo;
         public TextView tanggalPromo;

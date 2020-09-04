@@ -23,7 +23,6 @@ public class LoadingDialog {
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.loading_bg);
         dialog.setCancelable(false);
         dialog.show();
-
     }
 
     void dismissLoading(){

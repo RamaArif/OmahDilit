@@ -2,7 +2,7 @@ package com.app.omahdilit.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PromoDetail {
+public class DetailPromoItem {
 
     @SerializedName("id")
     private String idPromo;
@@ -13,7 +13,7 @@ public class PromoDetail {
     @SerializedName("potongan")
     private String potongan;
 
-    @SerializedName("photoUrl")
+    @SerializedName("photo")
     private String urlPromo;
 
     @SerializedName("detail")
@@ -25,7 +25,7 @@ public class PromoDetail {
     @SerializedName("tglakhir")
     private String tglAkhirPromo;
 
-    public PromoDetail(String idPromo, String namaPromo, String potongan, String urlPromo, String detailPromo, String tglAwalPromo, String tglAkhirPromo) {
+    public DetailPromoItem(String idPromo, String namaPromo, String potongan, String urlPromo, String detailPromo, String tglAwalPromo, String tglAkhirPromo) {
         this.idPromo = idPromo;
         this.namaPromo = namaPromo;
         this.potongan = potongan;

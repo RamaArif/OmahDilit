@@ -27,4 +27,12 @@ public class RetrofitApi {
     }
 
     public static ModelApi getApiModel(){return getRetrofitClient().create(ModelApi.class);}
+
+    public static PromoBannerApi getApiPromoBaner(){return getRetrofitClient().create(PromoBannerApi.class);}
+
+    public static DetailPromoApi getDetailPromo(){return  getRetrofitClient().create(DetailPromoApi.class);}
+
+    public static LoginApi getLogin(){return getRetrofitClient().create(LoginApi.class);}
+
+    public static RegisterApi register(){return  getRetrofitClient().create(RegisterApi.class);}
 }

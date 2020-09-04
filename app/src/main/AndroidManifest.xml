@@ -10,11 +10,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/noActionBarWhite">
-        <activity android:name=".Promo"/>
+        android:theme="@style/noActionBarWhite"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/noActionBarWhite.NoActionBar">
+</activity>
+        <activity android:name=".Promo" />
         <activity
             android:name=".DetailPromo"
+            android:parentActivityName=".Promo"
             android:theme="@style/TransparentStatusbar" />
         <activity android:name=".DetailPilihModel" />
         <activity android:name=".PilihModelRambut" />
@@ -51,10 +57,10 @@
             android:hardwareAccelerated="false"
             android:theme="@style/SplashScreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
     </application>
 

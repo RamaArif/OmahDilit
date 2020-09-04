@@ -33,7 +33,7 @@
         android:textColor="@android:color/black"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14"/>
 
     <EditText
         android:id="@+id/register_input_email"
@@ -74,6 +74,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_input_email" />
 
+    <EditText
+        android:id="@+id/register_input_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:maxLines="3"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/fieldinputemailpass"
+        android:fontFamily="@font/muli_semibold"
+        android:hint="Alamat Lengkap"
+        android:inputType="textCapWords"
+        android:paddingLeft="18dp"
+        android:textColor="@color/textdarkGrey"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_input_name" />
+
     <com.rilixtech.widget.countrycodepicker.CountryCodePicker
         android:id="@+id/register_input_ccp"
         android:layout_width="wrap_content"
@@ -112,7 +133,7 @@
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/register_input_ccp"
-        app:layout_constraintTop_toBottomOf="@+id/register_input_name" />
+        app:layout_constraintTop_toBottomOf="@+id/register_input_address" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -156,6 +177,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <ImageView
+        android:id="@+id/register_image_profile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@color/colorPrimary"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/register_button_register"
+        app:layout_constraintTop_toBottomOf="@id/register_button_register" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
