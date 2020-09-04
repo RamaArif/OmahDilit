@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -14,8 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.omahdilit.api.RegisterApi;
 import com.app.omahdilit.api.RetrofitApi;
-import com.app.omahdilit.response.LoginResponse;
-import com.app.omahdilit.response.RegisterRequestBody;
+import com.app.omahdilit.response.BaseResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -24,8 +24,6 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
-import com.google.firebase.auth.GoogleAuthCredential;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 import com.squareup.picasso.Picasso;
 
@@ -59,7 +57,7 @@ public class Register extends AppCompatActivity {
     @BindView(R.id.register_image_profile)
     ImageView register_image_profile;
 
-    String emailUser, nameUser,phoneUser,Address, passUser, photoUser, uid, pushtoken, isApiSuccess="0", isFirebaseSuccess="0";
+    String email, name, number, addres, passUser, photo, uid, pushtoken;
 
     LoadingDialog loadingDialog;
 
@@ -103,48 +101,54 @@ public class Register extends AppCompatActivity {
         loadingDialog.startLoading();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-//        Intent intent = new Intent(Register.this, MainActivity.class);
-//        startActivity(intent);
-//        finish();
-
-        emailUser = String.valueOf(register_input_email.getText());
-        nameUser = String.valueOf(register_input_name.getText());
-        phoneUser = register_input_ccp.getSelectedCountryCode() + String.valueOf(register_input_phone.getText());
-        Address = String.valueOf(register_input_address);
+        email = String.valueOf(register_input_email.getText());
+        name = String.valueOf(register_input_name.getText());
+        number = register_input_ccp.getSelectedCountryCode() + register_input_phone.getText();
+        addres = String.valueOf(register_input_address.getText());
         passUser = String.valueOf(register_input_password.getText());
+
+        Log.w("email", email);
+        Log.w("name", name);
+        Log.w("address", addres);
+        Log.w("number", number);
+        Log.w("pass", passUser);
+        Log.w("uid", uid);
+        Log.w("token", pushtoken);
 
         BitmapDrawable drawable = (BitmapDrawable) register_image_profile.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        photoUser = Base64.encodeToString(byteArrayOutputStream.toByteArray(),
-                Base64.DEFAULT);
-////        Toast.makeText(Register.this, "convert sukses", Toast.LENGTH_SHORT).show();
+        byte[] imageBytes = byteArrayOutputStream.toByteArray();
+        photo = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        Log.w("photo", photo);
+//        Toast.makeText(Register.this, "convert sukses", Toast.LENGTH_SHORT).show();
 
         RegisterApi api = RetrofitApi.register();
-        Call<LoginResponse> call = api.register(new RegisterRequestBody(nameUser, Address,phoneUser, emailUser,photoUser,uid,pushtoken));
-        call.enqueue(new Callback<LoginResponse>() {
+        Call<BaseResponse> call = api.register(name, addres, number, email,uid, photo,pushtoken);
+        call.enqueue(new Callback<BaseResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.body() != null){
+                    Toast.makeText(Register.this, "Berhasil panggil api", Toast.LENGTH_LONG).show();
                     if (!response.body().getError()){
-                        AuthCredential authCredential = EmailAuthProvider.getCredential(emailUser,passUser);
+                        Toast.makeText(Register.this, "Berhasil daftar database", Toast.LENGTH_LONG).show();
+                        AuthCredential authCredential = EmailAuthProvider.getCredential(email,passUser);
                         user.linkWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-
+                                loadingDialog.dismissLoading();
+                                Intent intent = new Intent(Register.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                         });
-                        loadingDialog.dismissLoading();
-                        Intent intent = new Intent(Register.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Toast.makeText(Register.this, "API error"+t, Toast.LENGTH_LONG).show();
                 loadingDialog.dismissLoading();
             }

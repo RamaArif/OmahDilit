@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.app.omahdilit.api.LoginApi;
 import com.app.omahdilit.api.RetrofitApi;
-import com.app.omahdilit.response.LoginResponse;
+import com.app.omahdilit.response.BaseResponse;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -20,7 +20,6 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -148,15 +147,12 @@ public class Login extends AppCompatActivity {
     }
 
     private void checkLogin(String email){
-        Toast.makeText(Login.this, email, Toast.LENGTH_SHORT).show();
-
         LoginApi api = RetrofitApi.getLogin();
-        Call<LoginResponse> call = api.getLogin(email);
-        call.enqueue(new Callback<LoginResponse>() {
+        Call<BaseResponse> call = api.getLogin(email);
+        call.enqueue(new Callback<BaseResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.body() != null){
-                    Toast.makeText(Login.this, "api dipanggil",Toast.LENGTH_SHORT).show();
                     Boolean unRegistered = response.body().getError();
                     if (unRegistered){
                         unregistered();
@@ -167,7 +163,7 @@ public class Login extends AppCompatActivity {
                 }
             }
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Toast.makeText(Login.this, "error : "+t,Toast.LENGTH_LONG).show();
             }
         });
