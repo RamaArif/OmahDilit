@@ -98,7 +98,7 @@ public class Register extends AppCompatActivity {
     }
 
     @OnClick(R.id.register_button_register) void register(){
-        loadingDialog.startLoading();
+         loadingDialog.startLoading();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         email = String.valueOf(register_input_email.getText());
@@ -107,6 +107,13 @@ public class Register extends AppCompatActivity {
         addres = String.valueOf(register_input_address.getText());
         passUser = String.valueOf(register_input_password.getText());
 
+        BitmapDrawable drawable = (BitmapDrawable) register_image_profile.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] imageBytes = byteArrayOutputStream.toByteArray();
+        photo = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
         Log.w("email", email);
         Log.w("name", name);
         Log.w("address", addres);
@@ -114,33 +121,29 @@ public class Register extends AppCompatActivity {
         Log.w("pass", passUser);
         Log.w("uid", uid);
         Log.w("token", pushtoken);
-
-        BitmapDrawable drawable = (BitmapDrawable) register_image_profile.getDrawable();
-        Bitmap bitmap = drawable.getBitmap();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        byte[] imageBytes = byteArrayOutputStream.toByteArray();
-        photo = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         Log.w("photo", photo);
 //        Toast.makeText(Register.this, "convert sukses", Toast.LENGTH_SHORT).show();
 
         RegisterApi api = RetrofitApi.register();
-        Call<BaseResponse> call = api.register(name, addres, number, email,uid, photo,pushtoken);
+        Call<BaseResponse> call = api.register(name,addres,number,email,uid,photo,pushtoken);
         call.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                Log.w("status", "api dipanggil");
                 if (response.body() != null){
-                    Toast.makeText(Register.this, "Berhasil panggil api", Toast.LENGTH_LONG).show();
                     if (!response.body().getError()){
                         Toast.makeText(Register.this, "Berhasil daftar database", Toast.LENGTH_LONG).show();
                         AuthCredential authCredential = EmailAuthProvider.getCredential(email,passUser);
                         user.linkWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                loadingDialog.dismissLoading();
-                                Intent intent = new Intent(Register.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
+                                if (task.isSuccessful()){
+                                    FirebaseUser currentUser = task.getResult().getUser();
+
+                                    Intent intent = new Intent(Register.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
                             }
                         });
                     }

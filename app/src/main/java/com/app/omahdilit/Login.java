@@ -46,6 +46,8 @@ public class Login extends AppCompatActivity {
     private final static int RC_SIGN_IN = 123;
     GoogleSignInClient mGoogleSignInClient;
 
+    LoadingDialog dialog;
+
     
     @Override
     public void onStart() {
@@ -82,6 +84,8 @@ public class Login extends AppCompatActivity {
                 }
             }
         };
+
+        dialog = new LoadingDialog(Login.this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -170,6 +174,7 @@ public class Login extends AppCompatActivity {
     }
 
     @OnClick (R.id.login_button_email) void login(){
+        dialog.startLoading();
         String email, password;
         email = String.valueOf(login_input_email.getText());
         password = String.valueOf(login_input_password.getText());
@@ -181,6 +186,7 @@ public class Login extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
                     checkLogin(user.getEmail());
+                    dialog.dismissLoading();
                 }
             }
         });
