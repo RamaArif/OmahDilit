@@ -18,8 +18,6 @@ public class ModelItem {
     @Expose
     private String kategori;
 
-
-
     public ModelItem(Integer id, String namaModel, String photo1, String kategori) {
         this.id = id;
         this.namaModel = namaModel;

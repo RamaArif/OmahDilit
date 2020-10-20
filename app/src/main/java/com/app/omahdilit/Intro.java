@@ -1,5 +1,6 @@
 package com.app.omahdilit;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -27,6 +28,7 @@ public class Intro extends AppIntro {
         setIndicatorColor(getResources().getColor(R.color.colorPrimary),getResources().getColor(R.color.colorAccent));
         setSeparatorColor(getResources().getColor(R.color.putih));
         setNextArrowColor(getResources().getColor(R.color.colorPrimary));
+
     }
 
     @Override

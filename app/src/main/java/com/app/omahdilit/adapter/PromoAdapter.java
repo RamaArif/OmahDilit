@@ -21,6 +21,7 @@ import com.app.omahdilit.response.PromoItem;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -64,14 +65,16 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.ViewHolder>{
         }
         DateFormat dateFormat = SimpleDateFormat.getDateInstance(DateFormat.LONG, localeID);
         holder.tanggalPromo.setText(dateFormat.format(date));
-        String idPromo = item.getIdPromo();
+        Integer idPromo = item.getIdPromo();
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(localeID);
+        holder.potonganPromo.setText(numberFormat.format(item.getPotongan()));
 
         holder.layoutPromo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailPromo.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("id", idPromo);
+                bundle.putInt("id", idPromo);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
@@ -92,6 +95,7 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.ViewHolder>{
         public ImageView imgPromo;
         public TextView namaPromo;
         public TextView tanggalPromo;
+        public TextView potonganPromo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -100,6 +104,7 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.ViewHolder>{
             imgPromo        = itemView.findViewById(R.id.promo_item_image);
             namaPromo       = itemView.findViewById(R.id.promo_item_textnama);
             tanggalPromo    = itemView.findViewById(R.id.promo_item_tanggal);
+            potonganPromo   = itemView.findViewById(R.id.promo_item_textDiskon);
         }
     }
 }

@@ -2,6 +2,7 @@ package com.app.omahdilit;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.view.Window;
 import android.widget.ImageView;
 
@@ -23,6 +24,16 @@ public class LoadingDialog {
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.loading_bg);
         dialog.setCancelable(false);
         dialog.show();
+    }
+
+    void checkLoading(){
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                dismissLoading();
+                startLoading();
+            }
+        });
     }
 
     void dismissLoading(){

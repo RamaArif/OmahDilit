@@ -66,6 +66,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+        dialog = new LoadingDialog(Login.this);
+
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() == null) {
 
@@ -73,6 +75,7 @@ public class Login extends AppCompatActivity {
         else {
             FirebaseUser user = mAuth.getCurrentUser();
             checkLogin(user.getEmail());
+            dialog.startLoading();
         }
 
         mAuthListner = new FirebaseAuth.AuthStateListener() {
@@ -81,11 +84,11 @@ public class Login extends AppCompatActivity {
                 if (firebaseAuth.getCurrentUser() != null) {
                     FirebaseUser user = mAuth.getCurrentUser();
                    checkLogin(user.getEmail());
+                   dialog.startLoading();
                 }
             }
         };
 
-        dialog = new LoadingDialog(Login.this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -98,6 +101,7 @@ public class Login extends AppCompatActivity {
     @OnClick(R.id.login_button_google) void logIn(){
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        dialog.startLoading();
     }
 
     @Override
@@ -111,7 +115,7 @@ public class Login extends AppCompatActivity {
                 assert account != null;
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-
+                dialog.dismissLoading();
             }
         }
     }
@@ -141,12 +145,14 @@ public class Login extends AppCompatActivity {
     private void registered() {
         Intent intent = new Intent(Login.this, MainActivity.class);
         startActivity(intent);
+        dialog.dismissLoading();
         finish();
     }
 
     private void unregistered(){
         Intent intent = new Intent(Login.this, Register.class);
         startActivity(intent);
+        dialog.dismissLoading();
         finish();
     }
 
@@ -169,6 +175,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Toast.makeText(Login.this, "error : "+t,Toast.LENGTH_LONG).show();
+                dialog.dismissLoading();
             }
         });
     }
@@ -186,7 +193,6 @@ public class Login extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
                     checkLogin(user.getEmail());
-                    dialog.dismissLoading();
                 }
             }
         });

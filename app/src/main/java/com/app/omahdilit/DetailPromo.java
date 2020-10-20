@@ -35,7 +35,7 @@ import retrofit2.Response;
 
 public class DetailPromo extends AppCompatActivity {
     
-    String idPromo;
+    Integer idPromo;
     LoadingDialog loadingDialog;
 
     @BindView(R.id.detailpromo_text_namaPromo)
@@ -93,8 +93,9 @@ public class DetailPromo extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null){
-            idPromo = bundle.getString("id");
+            idPromo = bundle.getInt("id");
         }
+
         DetailPromoApi api = RetrofitApi.getDetailPromo();
         Call<DetailPromoItem> call = api.getDetailPromo(idPromo);
         call.enqueue(new Callback<DetailPromoItem>() {

@@ -20,5 +20,7 @@ public interface RegisterApi {
             @Field("email") String email,
             @Field("uid") String uid,
             @Field("photo") String photo,
-            @Field("pushtoken") String pushtoken);
+            @Field("pushtoken") String pushtoken,
+            @Field("lat") Double lat,
+            @Field("lng") Double lng);
 }

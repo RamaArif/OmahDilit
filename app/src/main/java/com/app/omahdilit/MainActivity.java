@@ -1,27 +1,31 @@
 package com.app.omahdilit;
 
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.app.omahdilit.api.CekTransaksiApi;
+import com.app.omahdilit.api.RetrofitApi;
+import com.app.omahdilit.response.CekTransaksiResponse;
 import com.app.omahdilit.ui.home.HomeFragment;
 import com.app.omahdilit.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
         HomeFragment.OnFragmentInteractionListener,
@@ -32,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @BindView(R.id.fab_cukur)
     FloatingActionButton fabParking;
 
+    ViewDialog alertDialog ;
+
+
     Fragment fragment1  = new HomeFragment();
     Fragment fragment3  = new ProfileFragment();
     Fragment active     = fragment1;
@@ -41,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        alertDialog = new ViewDialog();
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.nav_host_fragment, fragment1)
@@ -63,8 +72,25 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     @OnClick({R.id.fab_cukur}) void fab(){
-        Intent intent = new Intent(MainActivity.this, PilihTukangCukur.class);
-        startActivity(intent);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        CekTransaksiApi api1 = RetrofitApi.cekTransaksi();
+        Call<CekTransaksiResponse> call1 = api1.cekTransaksi(user.getUid());
+        call1.enqueue(new Callback<CekTransaksiResponse>() {
+            @Override
+            public void onResponse(Call<CekTransaksiResponse> call, Response<CekTransaksiResponse> response) {
+                if (response.body().getStatus()==null){
+                    Intent intent = new Intent(MainActivity.this, PilihTukangCukur.class);
+                    startActivity(intent);
+                } else{
+                    alertDialog.showDialog(MainActivity.this, R.string.textErrorOrderAktif);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CekTransaksiResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
@@ -72,12 +98,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Fragment fragment = null;
         switch (item.getItemId()){
             case R.id.navigation_home:
-                loadFragment(fragment1);
-
+                fragment = fragment1;
                 break;
             case R.id.navigation_profile:
-                loadFragment(fragment3);
-
+                fragment = fragment3;
                 break;
         }
         return loadFragment(fragment);

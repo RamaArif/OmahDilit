@@ -29,7 +29,6 @@ public class RetrofitApi {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-
     }
 
     public static PromoApi getApiPromo(){
@@ -45,4 +44,26 @@ public class RetrofitApi {
     public static LoginApi getLogin(){return getRetrofitClient().create(LoginApi.class);}
 
     public static RegisterApi register(){return  getRetrofitClient().create(RegisterApi.class);}
+
+    public static DetailModelApi getDetailModel(){return getRetrofitClient().create(DetailModelApi.class);}
+
+    public static MoreModelApi getMoreModel(){return  getRetrofitClient().create(MoreModelApi.class);}
+
+    public static TukangListApi getTukangList(){return getRetrofitClient().create(TukangListApi.class);}
+
+    public static JarakTukangApi getJarakTukang(){return getRetrofitClient().create(JarakTukangApi.class);}
+
+    public static CustomerApi getCustomer(){return  getRetrofitClient().create(CustomerApi.class);}
+
+    public static HargaApi hitungHarga(){return  getRetrofitClient().create(HargaApi.class);}
+
+    public static TransaksiApi createTransaksi(){return getRetrofitClient().create(TransaksiApi.class);}
+
+    public static DetailTransaksiApi getDetailTransaksi(){return  getRetrofitClient().create(DetailTransaksiApi.class);}
+
+    public static DetailTukangApi getDetailTukang(){return  getRetrofitClient().create(DetailTukangApi.class);}
+
+    public static CekTransaksiApi cekTransaksi(){return getRetrofitClient().create(CekTransaksiApi.class);}
+
+    public static RiwayatApi getRiwayatList(){return getRetrofitClient().create(RiwayatApi.class);}
 }

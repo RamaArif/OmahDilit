@@ -12,7 +12,7 @@
         android:layout_marginHorizontal="20dp"
         android:elevation="7dp">
         <ImageView
-            android:id="@+id/item_detailmodel_slider"
+            android:id="@+id/item_detailmodel_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </androidx.cardview.widget.CardView>

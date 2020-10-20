@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="130dp"
     app:cardCornerRadius="15dp"
-    android:elevation="20dp"
+    app:cardElevation="7dp"
     android:layout_marginVertical="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:background="@color/putih">
 
         <ImageView
-            android:id="@+id/img_riwayat_model"
+            android:id="@+id/item_riwayat_img"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginStart="24dp"
@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_riwayat_namamodel"
+            android:id="@+id/item_riwayat_namaModel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -33,12 +33,12 @@
             android:text="Rockabilly"
             android:textAppearance="@style/baseTextBold"
             android:textSize="18dp"
-            app:layout_constraintEnd_toStartOf="@+id/text_riwayat_tanggal"
-            app:layout_constraintStart_toEndOf="@+id/img_riwayat_model"
-            app:layout_constraintTop_toTopOf="@+id/img_riwayat_model" />
+            app:layout_constraintEnd_toStartOf="@+id/item_riwayat_tanggal"
+            app:layout_constraintStart_toEndOf="@+id/item_riwayat_img"
+            app:layout_constraintTop_toTopOf="@+id/item_riwayat_img" />
 
         <TextView
-            android:id="@+id/text_riwayat_tanggal"
+            android:id="@+id/item_riwayat_tanggal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
@@ -47,10 +47,10 @@
             android:textColor="@color/textdarkGrey"
             android:textSize="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/img_riwayat_model" />
+            app:layout_constraintTop_toTopOf="@+id/item_riwayat_img" />
 
         <TextView
-            android:id="@+id/text_riwayat_alamat"
+            android:id="@+id/item_riwayat_alamat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -58,8 +58,8 @@
             android:textAppearance="@style/baseText"
             android:textColor="@color/textdarkGrey"
             android:textSize="12dp"
-            app:layout_constraintStart_toStartOf="@+id/text_riwayat_namamodel"
-            app:layout_constraintTop_toBottomOf="@+id/text_riwayat_namamodel" />
+            app:layout_constraintStart_toStartOf="@+id/item_riwayat_namaModel"
+            app:layout_constraintTop_toBottomOf="@+id/item_riwayat_namaModel" />
 
         <View
             android:id="@+id/view"
@@ -67,21 +67,21 @@
             android:layout_height="1dp"
             android:layout_marginTop="8dp"
             android:background="#DDDDDD"
-            app:layout_constraintTop_toBottomOf="@+id/img_riwayat_model" />
+            app:layout_constraintTop_toBottomOf="@+id/item_riwayat_img" />
 
         <TextView
-            android:id="@+id/text_riwayat_namaTukang"
+            android:id="@+id/item_riwayat_namaTukang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Anharu Wikotama"
             android:textAppearance="@style/baseTextSemiBold"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/img_riwayat_model"
+            app:layout_constraintStart_toStartOf="@+id/item_riwayat_img"
             app:layout_constraintTop_toBottomOf="@+id/view"/>
 
         <TextView
-            android:id="@+id/text_riwayat_harga"
+            android:id="@+id/item_riwayat_harga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="15.000"
@@ -89,7 +89,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/text_riwayat_tanggal"
+            app:layout_constraintEnd_toEndOf="@+id/item_riwayat_tanggal"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <TextView
@@ -101,7 +101,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text_riwayat_harga"
+            app:layout_constraintEnd_toStartOf="@+id/item_riwayat_harga"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

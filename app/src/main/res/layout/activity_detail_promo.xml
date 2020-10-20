@@ -246,22 +246,4 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_gravity="bottom"
-        android:gravity="center"
-        android:background="@color/colorPrimary">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Gunakan Promo"
-            android:textAlignment="center"
-            android:textAppearance="@style/baseTextBold"
-            android:textColor="@color/putih"
-            android:textSize="18sp"
-            />
-    </LinearLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

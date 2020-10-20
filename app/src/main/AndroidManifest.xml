@@ -3,6 +3,8 @@
     package="com.app.omahdilit">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,11 +14,22 @@
         android:supportsRtl="true"
         android:theme="@style/noActionBarWhite"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/noActionBarWhite.NoActionBar">
-</activity>
+        <activity android:name=".DetailPesanan"></activity>
+
+        <service
+            android:name=".notification.FirebaseMessaging"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".PilihPromo" />
+
+        <meta-data
+            android:name="com.google.android.geo.api_key"
+            android:value="@string/API_Maps" />
+
         <activity android:name=".Promo" />
         <activity
             android:name=".DetailPromo"
@@ -24,7 +37,7 @@
             android:theme="@style/TransparentStatusbar" />
         <activity android:name=".DetailPilihModel" />
         <activity android:name=".PilihModelRambut" />
-        <activity android:name=".DetailPesanan" />
+        <activity android:name=".KonfirmasiPesanan" />
         <activity
             android:name=".EditProfil"
             android:label=""
@@ -57,10 +70,10 @@
             android:hardwareAccelerated="false"
             android:theme="@style/SplashScreen">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

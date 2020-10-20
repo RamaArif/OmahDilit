@@ -10,5 +10,5 @@ import retrofit2.http.Query;
 public interface DetailPromoApi {
 
     @POST("detailpromo?id=")
-    Call<DetailPromoItem> getDetailPromo(@Query("id") String idPromo);
+    Call<DetailPromoItem> getDetailPromo(@Query("id") Integer idPromo);
 }

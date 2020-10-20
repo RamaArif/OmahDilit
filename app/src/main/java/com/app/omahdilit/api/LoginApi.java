@@ -10,4 +10,5 @@ public interface LoginApi {
 
     @POST("logingoogle")
     Call<BaseResponse> getLogin(@Query("email") String email);
+
 }

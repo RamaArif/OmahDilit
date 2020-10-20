@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName;
 public class PromoItem {
 
     @SerializedName("id")
-    private String idPromo;
+    private Integer idPromo;
 
     @SerializedName("nama")
     private String namaPromo;
 
     @SerializedName("potongan")
-    private String potongan;
+    private Integer potongan;
 
     @SerializedName("photo")
     private String urlPromo;
@@ -19,7 +19,7 @@ public class PromoItem {
     @SerializedName("tglakhir")
     private String tglAkhirPromo;
 
-    public PromoItem(String idPromo, String namaPromo, String potongan, String urlPromo, String tglAkhirPromo) {
+    public PromoItem(Integer idPromo, String namaPromo, Integer potongan, String urlPromo, String tglAkhirPromo) {
         this.idPromo = idPromo;
         this.namaPromo = namaPromo;
         this.potongan = potongan;
@@ -27,7 +27,7 @@ public class PromoItem {
         this.tglAkhirPromo = tglAkhirPromo;
     }
 
-    public String getIdPromo() {
+    public Integer getIdPromo() {
         return idPromo;
     }
 
@@ -35,7 +35,7 @@ public class PromoItem {
         return namaPromo;
     }
 
-    public String getPotongan() {
+    public Integer getPotongan() {
         return potongan;
     }
 
