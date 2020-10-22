@@ -128,7 +128,7 @@ public class KonfirmasiPesanan extends AppCompatActivity{
         uidCustomer = user.getUid();
 
         // Initialize the SDK
-        Places.initialize(getApplicationContext(), "AIzaSyDWxy8MciL_TIacdS1aPDKDaKCDZI9invA");
+        Places.initialize(getApplicationContext(), String.valueOf(R.string.map_api) );
 
         // Create a new PlacesClient instance
         PlacesClient placesClient = Places.createClient(this);

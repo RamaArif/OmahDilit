@@ -106,4 +106,6 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="textErrorOrderAktif">Maaf, kamu tidak bisa buat pesanan baru, selesaikan pesanan yang aktif atau minta tukang cukur untuk cancel</string>
+
+    <string name="map_api">"AIzaSyDWxy8MciL_TIacdS1aPDKDaKCDZI9invA"</string>
 </resources>
