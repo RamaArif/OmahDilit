@@ -7,13 +7,21 @@ public class TransaksiResponse {
     @SerializedName("body")
     @Expose
     String kodeTrans;
+    @SerializedName("id_pesanan")
+    @Expose
+    Integer idTrans;
     @SerializedName("error")
     @Expose
     Boolean error;
 
-    public TransaksiResponse(String kodeTrans, Boolean error) {
+    public TransaksiResponse(String kodeTrans, Integer idTrans, Boolean error) {
         this.kodeTrans = kodeTrans;
+        this.idTrans = idTrans;
         this.error = error;
+    }
+
+    public Integer getIdTrans() {
+        return idTrans;
     }
 
     public String getKodeTrans() {

@@ -66,4 +66,6 @@ public class RetrofitApi {
     public static CekTransaksiApi cekTransaksi(){return getRetrofitClient().create(CekTransaksiApi.class);}
 
     public static RiwayatApi getRiwayatList(){return getRetrofitClient().create(RiwayatApi.class);}
+
+    public static NotifBarberApi sendNotif(){return getRetrofitClient().create(NotifBarberApi.class);}
 }

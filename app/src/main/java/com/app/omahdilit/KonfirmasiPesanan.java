@@ -19,6 +19,7 @@ import com.app.omahdilit.api.DetailModelApi;
 import com.app.omahdilit.api.DetailPromoApi;
 import com.app.omahdilit.api.HargaApi;
 import com.app.omahdilit.api.JarakTukangApi;
+import com.app.omahdilit.api.NotifBarberApi;
 import com.app.omahdilit.api.RetrofitApi;
 import com.app.omahdilit.api.TransaksiApi;
 import com.app.omahdilit.response.BaseResponse;
@@ -189,10 +190,7 @@ public class KonfirmasiPesanan extends AppCompatActivity{
                     boolean eror = response.body().getError();
                     if (!eror){
                         loadingDialog.dismissLoading();
-                        Intent intent = new Intent(KonfirmasiPesanan.this, DetailPesanan.class);
-                        intent.putExtra("kodeTransaksi", response.body().getKodeTrans());
-                        startActivity(intent);
-                        finish();
+                        sendNotifBarber(response.body().getIdTrans(), response.body().getKodeTrans());
                     } else{
                         Toast.makeText(KonfirmasiPesanan.this, "transaksi gagal", Toast.LENGTH_LONG).show();
                     }
@@ -204,6 +202,26 @@ public class KonfirmasiPesanan extends AppCompatActivity{
                 Toast.makeText(KonfirmasiPesanan.this, "Error : "+t, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void sendNotifBarber(Integer idTrans, String kodeTrans) {
+        NotifBarberApi api = RetrofitApi.sendNotif();
+        Call<BaseResponse> call = api.sendNotif(idTrans);
+        call.enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                Intent intent = new Intent(KonfirmasiPesanan.this, DetailPesanan.class);
+                intent.putExtra("kodeTransaksi", kodeTrans);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+
+            }
+        });
+
     }
 
     @OnClick(R.id.konfirmasipesanan_input_alamat)void onInputAlamatClick(){
